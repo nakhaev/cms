@@ -1,0 +1,29 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "client manager server",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nakhaev/cms.git"
+  },
+  "author": "Oleksii Nakhaiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nakhaev/cms/issues"
+  },
+  "homepage": "https://github.com/nakhaev/cms#readme",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "typescript": "^5.0.4"
+  }
+}
