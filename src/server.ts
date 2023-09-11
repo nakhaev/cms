@@ -1,10 +1,10 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { mergeTypeDefs } from '@graphql-tools/merge';
-import bookResolvers from './resolvers/book.resolvers.js';
-import userResolvers from './resolvers/user.resolvers.js';
-import bookTypeDefs from './typedefs/book.typedefs.js';
-import userTypeDefs from './typedefs/user.typedefs.js';
+import bookResolvers from './book/book.resolvers.js';
+import userResolvers from './user/user.resolvers.js';
+import bookTypeDefs from './book/book.typedefs.js';
+import userTypeDefs from './user/user.typedefs.js';
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
