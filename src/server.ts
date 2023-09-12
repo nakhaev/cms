@@ -1,41 +1,33 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { mergeTypeDefs } from '@graphql-tools/merge';
-import bookResolvers from './book/book.resolvers.js';
+import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import userResolvers from './user/user.resolvers.js';
-import bookTypeDefs from './book/book.typedefs.js';
 import userTypeDefs from './user/user.typedefs.js';
+import accountResolvers from './account/account.resolvers.js';
+import accountTypeDefs from './account/account.typedefs.js';
+import departmentTypeDefs from './department/department.typedefs.js';
+import departmentResolvers from './department/department.resolvers.js';
 
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const schemas = [bookTypeDefs, userTypeDefs];
-const typeDefs = mergeTypeDefs(schemas);
 
-// Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
-const resolvers = {
-    Query: {
-      ...bookResolvers.Query,
-      ...userResolvers.Query,
-    },
-    // Mutation: {},
-    // Subscription: {},
-  };
+const typeDefs = mergeTypeDefs([
+  userTypeDefs,
+  accountTypeDefs,
+  departmentTypeDefs
+]);
 
-  // The ApolloServer constructor requires two parameters: your schema
-// definition and your set of resolvers.
+const resolvers = mergeResolvers([
+  userResolvers,
+  accountResolvers,
+  departmentResolvers
+])
+
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+  typeDefs,
+  resolvers,
+});
   
-  // Passing an ApolloServer instance to the `startStandaloneServer` function:
-  //  1. creates an Express app
-  //  2. installs your ApolloServer instance as middleware
-  //  3. prepares your app to handle incoming requests
-  const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
-  });
-  
-  console.log(`🚀  Server ready at: ${url}`);
+const { url } = await startStandaloneServer(server, {
+  listen: { port: 4000 },
+});
+
+console.log(`🚀  Server ready at: ${url}`);

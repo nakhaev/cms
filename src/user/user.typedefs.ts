@@ -4,7 +4,8 @@ const userTypeDefs = `#graphql
         name: String
         email: String
         status: String
-        role: String
+        role: String,
+        accountId: ID!
     }
 
     type Query {
