@@ -1,4 +1,7 @@
 import * as departmentService from './department.service.js'
+import * as userService from '../user/user.service.js'
+import * as clientService from '../client/client.service.js'
+
 
 const departmentResolvers = {
     Query: {
@@ -9,7 +12,22 @@ const departmentResolvers = {
             return departmentService.getDepartmentById(id);
         }
       },
-    // Mutation: {},
+      Department: {
+        clients: (parent: any, args: any, context: any, info: any) => {
+            const { clientIds } = parent;
+            return clientService.getClientListByIds(clientIds);
+        },
+        users: (parent: any, args: any, context: any, info: any) => {
+            const { userIds } = parent;
+            return userService.getUserListByIds(userIds);
+        }
+    },
+    Mutation: {
+        createDepartment: (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            return departmentService.createDepartment(input);
+        }
+    },
     // Subscription: {},
 };
 

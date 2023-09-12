@@ -1,8 +1,10 @@
 export class User {
-    id?: String;
-    name?: String;
-    email?: String;
-    status?: String;
-    role?: String;
-    accountId!: String;
+    id?: string;
+    name?: string;
+    email?: string;
+    status?: string;
+    role?: string;
+    accountId!: string;
+    departmentIds: string[] = [];
+    clientIds: string[] = [];
 }

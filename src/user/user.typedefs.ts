@@ -6,6 +6,10 @@ const userTypeDefs = `#graphql
         status: String
         role: String,
         accountId: ID!
+        departmentIds: [String]
+        clientIds: [String]
+        clients: [Client]
+        departments: [Department]
     }
 
     type Query {

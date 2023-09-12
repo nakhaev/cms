@@ -11,7 +11,7 @@ const clientHistoryTypeDefs = `#graphql
 
     type Query {
         clientHistoryList: [ClientHistory],
-        clientHistory(id: ID!): ClientHistory
+        clientHistoryById(id: ID!): ClientHistory
     }
 
     # type Mutation {}

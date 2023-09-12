@@ -1,7 +1,9 @@
 export class Client {
-    id?: String;
-    name?: String;
-    email?: String;
-    status?: String;
-    accountId!: String;
+    id?: string;
+    name?: string;
+    email?: string;
+    status?: string;
+    accountId!: string;
+    departmentIds: string[] = [];
+    userIds: string[] = [];
 }

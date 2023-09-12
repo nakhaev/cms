@@ -1,9 +1,9 @@
 export class ClientHistory {
-    id!: String;
-    description?: String;
-    departmentId!: String;
-    userId!: String;
-    accountId!: String;
-    clientId!: String;
-    date!: String;
+    id!: string;
+    description?: string;
+    departmentId!: string;
+    userId!: string;
+    accountId!: string;
+    clientId!: string;
+    date!: string;
 }

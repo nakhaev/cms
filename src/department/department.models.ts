@@ -1,8 +1,10 @@
 export class Department {
-    id!: String;
-    title?: String;
-    email?: String;
-    status?: String;
-    address?: String;
-    phone?: String;
+    id!: string;
+    title?: string;
+    email?: string;
+    status?: string;
+    address?: string;
+    phone?: string;
+    userIds: string[] = [];
+    clientIds: string[] = [];
 }
