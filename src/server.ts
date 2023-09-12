@@ -7,19 +7,26 @@ import accountResolvers from './account/account.resolvers.js';
 import accountTypeDefs from './account/account.typedefs.js';
 import departmentTypeDefs from './department/department.typedefs.js';
 import departmentResolvers from './department/department.resolvers.js';
-
+import clientTypeDefs from './client/client.typedefs.js';
+import clientResolvers from './client/client.resolvers.js';
+import clientHistoryTypeDefs from './clientHistory/clientHistory.typedefs.js';
+import clientHistoryResolvers from './clientHistory/clientHistory.resolvers.js';
 
 const typeDefs = mergeTypeDefs([
   userTypeDefs,
   accountTypeDefs,
-  departmentTypeDefs
+  departmentTypeDefs,
+  clientTypeDefs,
+  clientHistoryTypeDefs
 ]);
 
 const resolvers = mergeResolvers([
   userResolvers,
   accountResolvers,
-  departmentResolvers
-])
+  departmentResolvers,
+  clientResolvers,
+  clientHistoryResolvers
+]);
 
 const server = new ApolloServer({
   typeDefs,
