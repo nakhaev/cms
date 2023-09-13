@@ -17,7 +17,20 @@ const userTypeDefs = `#graphql
         user(id: ID!): User
     }
 
-    # type Mutation {}
+    input CreateUserInput {
+        name: String!
+        email: String!
+        password: String!
+        role: String!
+        status: String!
+        accountId: ID!
+        departmentIds: [String]
+        clientIds: [String]
+    }
+
+    type Mutation {
+        createUser(input: CreateUserInput): User
+    }
     # type Subscription {}
 `;
 

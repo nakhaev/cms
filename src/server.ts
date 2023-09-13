@@ -11,6 +11,10 @@ import clientTypeDefs from './client/client.typedefs.js';
 import clientResolvers from './client/client.resolvers.js';
 import clientHistoryTypeDefs from './clientHistory/clientHistory.typedefs.js';
 import clientHistoryResolvers from './clientHistory/clientHistory.resolvers.js';
+import connect from './db.js';
+
+// connect to database
+await connect();
 
 const typeDefs = mergeTypeDefs([
   userTypeDefs,
