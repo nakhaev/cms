@@ -5,26 +5,40 @@ import * as clientService from '../client/client.service.js'
 const userResolvers = {
     Query: {
         users: async () => await userService.getUserList(),
-        user: (parent: any, args: any, context: any, info: any) => {
+        user: async (parent: any, args: any, context: any, info: any) => {
             const { id } = args;
-            return userService.getUserById(id);
+            return await userService.getUserById(id);
         },
       },
-      User: {
-        departments: (parent: any, args: any, context: any, info: any) => {
-            const { departmentIds } = parent;
-            return departmentService.getDepartmentListByIds(departmentIds);
-        },
-        clients: (parent: any, args: any, context: any, info: any) => {
-            const { clientIds } = parent;
-            return clientService.getClientListByIds(clientIds);
-        }
-      },
+    //   User: {
+    //     departments: (parent: any, args: any, context: any, info: any) => {
+    //         const { departmentIds } = parent;
+    //         return departmentService.getDepartmentListByIds(departmentIds);
+    //     },
+    //     clients: (parent: any, args: any, context: any, info: any) => {
+    //         const { clientIds } = parent;
+    //         return clientService.getClientListByIds(clientIds);
+    //     }
+    //   },
     Mutation: {
         createUser: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const user = await userService.createUser(input);
-            return user;
+            return await userService.createUser(input);
+        },
+        updateUser: async (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            const { id } = input;
+            if (!id) {
+                throw new Error('User id is required');
+            }
+            return await userService.updateUser(input);
+        },
+        deleteUser: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = args;
+            if (!id) {
+                throw new Error('User id is required');
+            }
+            return await userService.deleteUser(id);
         }
     },
     // Subscription: {},

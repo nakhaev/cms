@@ -12,6 +12,11 @@ import clientResolvers from './client/client.resolvers.js';
 import clientHistoryTypeDefs from './clientHistory/clientHistory.typedefs.js';
 import clientHistoryResolvers from './clientHistory/clientHistory.resolvers.js';
 import connect from './db.js';
+import config from 'config';
+
+console.log('>>> config', config.get('enviroment'));
+
+const PORT: number = config.get('port') || 4000;
 
 // connect to database
 await connect();
@@ -38,7 +43,7 @@ const server = new ApolloServer({
 });
   
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
+  listen: { port: PORT },
 });
 
-console.log(`🚀  Server ready at: ${url}`);
+console.log(`>>> 🚀  Server ready at: ${url}`);

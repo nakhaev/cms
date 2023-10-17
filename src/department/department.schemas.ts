@@ -1,18 +1,17 @@
 import mongoose from "mongoose";
 
-export class User {
-    id?: mongoose.Schema.Types.ObjectId;
-    name?: string;
+export class Department {
+    id?: string;
+    title?: string;
     email?: string;
     status?: string;
-    role?: string;
-    accountId!: mongoose.Schema.Types.ObjectId;
-    createdAt?: Date;
-    updatedAt?: Date;
+    address?: string;
+    phone?: string;
+    // users: string[] = [];
 }
 
-const userSchema = new mongoose.Schema({
-    name: {
+const departmentSchema = new mongoose.Schema({
+    title: {
         type: String,
         required: true,
     },
@@ -20,25 +19,28 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
-    role: {
-        type: String,
-        required: true,
-    },
     status: {
         type: String,
         required: true,
     },
-    accountId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Account',
+    address: {
+        type: String,
         required: true,
-    }
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    accountId: {
+        type: String,
+        required: true,
+    },
+    users: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 }, { 
     timestamps: true 
 });
 
-export const userModel = mongoose.model('User', userSchema);
+export const departmentModel = mongoose.model('Department', departmentSchema);

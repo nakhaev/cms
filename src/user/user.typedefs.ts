@@ -3,13 +3,10 @@ const userTypeDefs = `#graphql
         id: ID
         name: String
         email: String
+        password: String
+        role: String
         status: String
-        role: String,
         accountId: ID!
-        departmentIds: [String]
-        clientIds: [String]
-        clients: [Client]
-        departments: [Department]
     }
 
     type Query {
@@ -24,12 +21,22 @@ const userTypeDefs = `#graphql
         role: String!
         status: String!
         accountId: ID!
-        departmentIds: [String]
-        clientIds: [String]
+    }
+
+    input UpdateUserInput {
+        id: ID!
+        name: String
+        email: String
+        password: String
+        role: String
+        status: String
+        accountId: ID
     }
 
     type Mutation {
-        createUser(input: CreateUserInput): User
+        createUser(input: CreateUserInput): User,
+        updateUser(input: UpdateUserInput): User,
+        deleteUser(id: ID!): User
     }
     # type Subscription {}
 `;

@@ -1,0 +1,7 @@
+{
+    "enviroment": "development",
+    "production": false,
+    "port": 4000,
+    "connectionString": "mongodb://root:root@localhost:27017",
+    "dbName": "cm_v1"
+}

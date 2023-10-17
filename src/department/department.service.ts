@@ -1,21 +1,21 @@
-import { Department } from './department.models';
-import departments from '../mock/department.mock.js';
-import * as uuid from 'uuid';
+import { departmentModel, Department } from "./department.schemas.js";
 
-export const getDepartmentList = (): Department[] => {
-    return departments;
+export const getDepartmentList = async (): Promise<Department[]> => {
+    return await departmentModel.find({});
 }
 
-export const getDepartmentById = (id: string): Department | undefined => {
-    return departments.find((department) => department.id == id);
+export const getDepartmentById = async (id: string): Promise<Department | null> => {
+    return await departmentModel.findById(id);
 }
 
-export const getDepartmentListByIds = (ids: string[]): Department[] => {
-    return departments.filter((department) => ids.includes(department.id));
+export const getDepartmentListByIds = async (ids: string[]): Promise<Department[]> => {
+    return await departmentModel.find({ _id: { $in: ids } });
 }
 
-export const createDepartment = (department: Department): Department => {
-    const newDepartment = { ...department, id: uuid.v4() };
-    departments.push(newDepartment);
-    return newDepartment;
+export const createDepartment = async (input: any): Promise<Department> => {
+    try {
+        return await departmentModel.create(input);
+    } catch (error) {
+        throw new Error('Create User Failed: ' + error);
+    }
 }
