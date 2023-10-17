@@ -1,17 +1,18 @@
 import mongoose from "mongoose";
 
-export class Department {
-    id?: string;
-    title?: string;
+export class Client {
+    id?: mongoose.Schema.Types.ObjectId;
+    name?: string;
     email?: string;
     status?: string;
-    address?: string;
     phone?: string;
-    accountId!: string;
+    accountId!: mongoose.Schema.Types.ObjectId;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
-const DepartmentSchema = new mongoose.Schema({
-    title: {
+const accountSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true,
     },
@@ -23,20 +24,17 @@ const DepartmentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    address: {
-        type: String,
-        required: true,
-    },
     phone: {
         type: String,
         required: true,
     },
     accountId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Account'
-    },
+        ref: 'Account',
+        required: true,
+    }
 }, { 
     timestamps: true 
 });
 
-export const DepartmentModel = mongoose.model('Department', DepartmentSchema);
+export const ClientModel = mongoose.model('Client', accountSchema);

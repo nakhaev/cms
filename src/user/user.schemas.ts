@@ -11,7 +11,7 @@ export class User {
     updatedAt?: Date;
 }
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -41,4 +41,4 @@ const userSchema = new mongoose.Schema({
     timestamps: true 
 });
 
-export const userModel = mongoose.model('User', userSchema);
+export const UserModel = mongoose.model('User', UserSchema);

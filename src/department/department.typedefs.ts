@@ -6,11 +6,7 @@ const departmentTypeDefs = `#graphql
         phone: String
         status: String
         address: String
-        userIds: [String]
-        clientIds: [String]
-        clients: [Client]
-        users: [User]
-        accountId: String
+        accountId: String!
     }
 
     type Query {
@@ -39,6 +35,8 @@ const departmentTypeDefs = `#graphql
 
     type Mutation {
         createDepartment(input: createDepartmentInput): Department
+        updateDepartment(input: updateDepartmentInput): Department
+        deleteDepartment(id: ID!): Department
     }
     # type Subscription {}
 `;

@@ -1,6 +1,4 @@
 import * as clientService from './client.service.js'
-import * as departmentService from '../department/department.service.js'
-import * as userService from '../user/user.service.js'
 
 const clientResolvers = {
     Query: {
@@ -10,17 +8,21 @@ const clientResolvers = {
             return clientService.getClientById(id);
         }
       },
-    Client: {
-        departments: (parent: any, args: any, context: any, info: any) => {
-            const { departmentIds } = parent;
-            return departmentService.getDepartmentListByIds(departmentIds);
+    Mutation: {
+        createClient: (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            return clientService.createClient(input);
         },
-        users: (parent: any, args: any, context: any, info: any) => {
-            const { userIds } = parent;
-            return userService.getUserListByIds(userIds);
+        updateClient: (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            const { id } = input;
+            return clientService.updateClient(id, input);
+        },
+        deleteClient: (parent: any, args: any, context: any, info: any) => {
+            const { id } = args;
+            return clientService.deleteClient(id);
         }
-    }
-    // Mutation: {},
+    },
     // Subscription: {},
 };
 

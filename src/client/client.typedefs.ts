@@ -4,12 +4,8 @@ const clientTypeDefs = `#graphql
         name: String
         email: String
         status: String
-        role: String,
+        phone: String
         accountId: ID!
-        departmentIds: [String]
-        userIds: [String]
-        users: [User]
-        departments: [Department]
     }
 
     type Query {
@@ -17,7 +13,28 @@ const clientTypeDefs = `#graphql
         client(id: ID!): Client
     }
 
-    # type Mutation {}
+    input CreateClientInput {
+        name: String!
+        email: String!
+        status: String!
+        phone: String!
+        accountId: ID!
+    }
+
+    input UpdateClientInput {
+        id: ID!
+        name: String
+        email: String
+        status: String
+        phone: String
+        accountId: ID
+    }
+
+    type Mutation {
+        createClient(input: CreateClientInput!): Client
+        updateClient(input: UpdateClientInput!): Client
+        deleteClient(id: ID!): Client
+    }
     # type Subscription {}
 `;
 

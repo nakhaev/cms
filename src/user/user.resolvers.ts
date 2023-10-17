@@ -1,6 +1,4 @@
 import * as userService from './user.service.js'
-import * as departmentService from '../department/department.service.js'
-import * as clientService from '../client/client.service.js'
 
 const userResolvers = {
     Query: {
@@ -10,16 +8,6 @@ const userResolvers = {
             return await userService.getUserById(id);
         },
       },
-    //   User: {
-    //     departments: (parent: any, args: any, context: any, info: any) => {
-    //         const { departmentIds } = parent;
-    //         return departmentService.getDepartmentListByIds(departmentIds);
-    //     },
-    //     clients: (parent: any, args: any, context: any, info: any) => {
-    //         const { clientIds } = parent;
-    //         return clientService.getClientListByIds(clientIds);
-    //     }
-    //   },
     Mutation: {
         createUser: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;

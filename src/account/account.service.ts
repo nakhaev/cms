@@ -31,7 +31,7 @@ export const updateAccount = async (id: string, input: any): Promise<Account | n
             throw new Error('Account Not Found');
         }
         await AccountModel.findByIdAndUpdate(id, input);
-        return AccountModel.findById(id);
+        return await AccountModel.findById(id);
     } catch (error) {
         throw new Error('Update Account Failed: ' + error);
     }

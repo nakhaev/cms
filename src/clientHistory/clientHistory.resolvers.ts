@@ -2,14 +2,27 @@ import * as clientHistoryService from './clientHistory.service.js'
 
 const clientHistoryResolvers = {
     Query: {
-        clientHistoryList: () => clientHistoryService.getClientHistoryList(),
-        // userhistory: (parent, args, context, info) => {
-        clientHistoryById: (parent: any, args: any, context: any, info: any) => {
+        clientHistoryList: async () => await clientHistoryService.getClientHistoryList(),
+        clientHistoryById: async (parent: any, args: any, context: any, info: any) => {
             const { id } = args;
-            return clientHistoryService.getClientHistoryById(id);
+            return await clientHistoryService.getClientHistoryById(id);
         }
       },
-    // Mutation: {},
+    Mutation: {
+        createClientHistory: async (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            return await clientHistoryService.createClientHistory(input);
+        },
+        updateClientHistory: async (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            const { id } = input;
+            return await clientHistoryService.updateClientHistory(id, input);
+        },
+        deleteClientHistory: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = args;
+            return await clientHistoryService.deleteClientHistory(id);
+        },
+    },
     // Subscription: {},
 };
 

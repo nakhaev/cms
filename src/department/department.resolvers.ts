@@ -1,7 +1,4 @@
-import * as departmentService from './department.service.js'
-import * as userService from '../user/user.service.js'
-import * as clientService from '../client/client.service.js'
-
+import * as departmentService from './department.service.js';
 
 const departmentResolvers = {
     Query: {
@@ -12,20 +9,25 @@ const departmentResolvers = {
             return await departmentService.getDepartmentById(id);
         }
       },
-      Department: {
-        clients: async (parent: any, args: any, context: any, info: any) => {
-            const { clientIds } = parent;
-            return await clientService.getClientListByIds(clientIds);
-        },
-        users: async (parent: any, args: any, context: any, info: any) => {
-            const { userIds } = parent;
-            return await userService.getUserListByIds(userIds);
-        }
-    },
     Mutation: {
         createDepartment: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
             return await departmentService.createDepartment(input);
+        },
+        updateDepartment: async (parent: any, args: any, context: any, info: any) => {
+            const { input } = args;
+            const { id } = input;
+            if (!id) {
+                throw new Error('Department id is required');
+            }
+            return await departmentService.updateDepartment(id, input);
+        },
+        deleteDepartment: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = args;
+            if (!id) {
+                throw new Error('Department id is required');
+            }
+            return await departmentService.deleteDepartment(id);
         }
     },
     // Subscription: {},

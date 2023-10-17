@@ -14,7 +14,30 @@ const clientHistoryTypeDefs = `#graphql
         clientHistoryById(id: ID!): ClientHistory
     }
 
-    # type Mutation {}
+    input CreateClientHistoryInput {
+        description: String
+        departmentId: ID!
+        userId: ID!
+        accountId: ID!
+        clientId: ID!
+        date: String!
+    }
+
+    input UpdateClientHistoryInput {
+        id: ID!
+        description: String
+        departmentId: ID
+        userId: ID
+        accountId: ID
+        clientId: ID
+        date: String
+    }
+
+    type Mutation {
+        createClientHistory(input: CreateClientHistoryInput!): ClientHistory
+        updateClientHistory(input: UpdateClientHistoryInput!): ClientHistory
+        deleteClientHistory(id: ID!): ClientHistory
+    }
     # type Subscription {}
 `;
 

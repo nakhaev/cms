@@ -6,7 +6,6 @@ export class Account {
     email?: string;
     status?: string;
     phone?: string;
-    // users?: [User];
 }
 
 const accountSchema = new mongoose.Schema({
