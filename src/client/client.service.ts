@@ -44,3 +44,11 @@ export const deleteClient = async (id: string): Promise<Client | null> => {
         throw new Error('Delete Client Failed: ' + error);
     }
 }
+
+export const getClientsByAccount = async (id: string): Promise<Client[]> => {
+    try {
+        return await ClientModel.find({ accountId: id });
+    } catch (error) {
+        throw new Error('Get Clients By Account Failed: ' + error);
+    }
+}

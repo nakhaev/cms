@@ -1,6 +1,6 @@
 const clientHistoryTypeDefs = `#graphql
     type ClientHistory {
-        id: ID!
+        id: ID
         description: String
         departmentId: ID!
         userId: ID!

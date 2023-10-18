@@ -1,4 +1,10 @@
-import * as accountService from './account.service.js'
+import * as accountService from './account.service.js';
+import * as userService from '../user/user.service.js';
+import * as clientService from '../client/client.service.js';
+import * as departmentService from '../department/department.service.js';
+import * as clientHistoryService from '../clientHistory/clientHistory.service.js';
+
+
 const accountResolvers = {
     Query: {
         accounts: async () => await accountService.getAccountList(),
@@ -6,6 +12,24 @@ const accountResolvers = {
         account: async (parent: any, args: any, context: any, info: any) => {
             const { id } = args;
             return await accountService.getAccountById(id);
+        }
+    },
+    Account: {
+        users: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await userService.getUsersByAccount(id);
+        },
+        departments: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await departmentService.getDepartmentsByAccount(id);
+        },
+        clients: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await clientService.getClientsByAccount(id);
+        },
+        clientHistory: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await clientHistoryService.getClientHistoryByAccount(id);
         }
     },
     Mutation: {

@@ -44,3 +44,11 @@ export const deleteDepartment = async (id: string): Promise<Department | null> =
         throw new Error('Delete Department Failed: ' + error);
     }
 }
+
+export const getDepartmentsByAccount = async (id: string): Promise<Department[]> => {
+    try {
+        return await DepartmentModel.find({ accountId: id });
+    } catch (error) {
+        throw new Error('Get Departments By Account Failed: ' + error);
+    }
+}

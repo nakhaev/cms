@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 export class ClientHistory {
-    id!: string;
+    id?: mongoose.Schema.Types.ObjectId;
     description?: string;
-    departmentId!: string;
-    userId!: string;
-    accountId!: string;
-    clientId!: string;
+    departmentId!: mongoose.Schema.Types.ObjectId;
+    userId!: mongoose.Schema.Types.ObjectId;
+    accountId!: mongoose.Schema.Types.ObjectId;
+    clientId!: mongoose.Schema.Types.ObjectId;
     date!: string;
 }
 

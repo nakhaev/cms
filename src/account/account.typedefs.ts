@@ -5,7 +5,10 @@ const accountTypeDefs = `#graphql
         email: String
         phone: String
         status: String
-        # users: [User!]
+        users: [User!]
+        departments: [Department!]
+        clients: [Client!]
+        clientHistory: [ClientHistory!]
     }
 
     type Query {

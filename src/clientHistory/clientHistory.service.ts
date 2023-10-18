@@ -44,3 +44,11 @@ export const deleteClientHistory = async (id: string): Promise<ClientHistory | n
         throw new Error('Delete ClientHistory Failed: ' + error);
     }
 }
+
+export const getClientHistoryByAccount = async (id: string): Promise<ClientHistory[]> => {
+    try {
+        return await ClientHistoryModel.find({ accountId: id });
+    } catch (error) {
+        throw new Error('Get ClientHistories By Account Failed: ' + error);
+    }
+}
