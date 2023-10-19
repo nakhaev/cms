@@ -35,6 +35,14 @@ const DepartmentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account'
     },
+    users: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
+    clients: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Client',
+    }],
 }, { 
     timestamps: true 
 });

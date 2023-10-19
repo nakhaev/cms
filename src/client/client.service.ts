@@ -52,3 +52,11 @@ export const getClientsByAccount = async (id: string): Promise<Client[]> => {
         throw new Error('Get Clients By Account Failed: ' + error);
     }
 }
+
+export const getClientsByListOfId = async (ids: string[]): Promise<Client[]> => {
+    try {
+        return await ClientModel.find({ _id: { $in: ids } });
+    } catch (error) {
+        throw new Error('Get Clients By List Of Id Failed: ' + error);
+    }
+}

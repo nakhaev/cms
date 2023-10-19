@@ -52,3 +52,11 @@ export const getDepartmentsByAccount = async (id: string): Promise<Department[]>
         throw new Error('Get Departments By Account Failed: ' + error);
     }
 }
+
+export const getDepartmentsByListOfId = async (ids: string[]): Promise<Department[]> => {
+    try {
+        return await DepartmentModel.find({ _id: { $in: ids } });
+    } catch (error) {
+        throw new Error('Get Departments By List Of Id Failed: ' + error);
+    }
+}

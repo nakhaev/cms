@@ -1,14 +1,25 @@
 import * as departmentService from './department.service.js';
+import * as clientService from '../client/client.service.js';
+import * as userService from '../user/user.service.js';
 
 const departmentResolvers = {
     Query: {
         departments: async () => await departmentService.getDepartmentList(),
-        // account: (parent, args, context, info) => {
         department: async (parent: any, args: any, context: any, info: any) => {
             const { id } = args;
             return await departmentService.getDepartmentById(id);
         }
-      },
+    },
+    Department: {
+        users: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await userService.getUsersByListOfId(id);
+        },
+        clients: async (parent: any, args: any, context: any, info: any) => {
+            const { id } = parent;
+            return await clientService.getClientsByListOfId(id);
+        },
+    },
     Mutation: {
         createDepartment: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;

@@ -7,6 +7,8 @@ const departmentTypeDefs = `#graphql
         status: String
         address: String
         accountId: String!
+        users: [User!]
+        clients: [Client!]
     }
 
     type Query {

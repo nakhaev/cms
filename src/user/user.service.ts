@@ -25,7 +25,7 @@ export const getUsersByAccount = async (id: string): Promise<User[]> => {
     }
 };
 
-export const getUserListByIds = async (ids: string[]): Promise<User[]> => {
+export const getUsersByListOfId = async (ids: string[]): Promise<User[]> => {
     try {
         return await UserModel.find({ _id: { $in: ids } });
     } catch (error) {

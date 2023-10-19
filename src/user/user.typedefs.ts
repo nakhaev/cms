@@ -7,6 +7,8 @@ const userTypeDefs = `#graphql
         role: String
         status: String
         accountId: ID!
+        departments: [Department]
+        clients: [Client]
     }
 
     type Query {
@@ -21,6 +23,8 @@ const userTypeDefs = `#graphql
         role: String!
         status: String!
         accountId: ID!
+        departments: [ID]
+        clients: [ID]
     }
 
     input UpdateUserInput {
@@ -31,6 +35,8 @@ const userTypeDefs = `#graphql
         role: String
         status: String
         accountId: ID
+        departments: [ID]
+        clients: [ID]
     }
 
     type Mutation {

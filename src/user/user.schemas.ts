@@ -9,6 +9,8 @@ export class User {
     accountId!: mongoose.Schema.Types.ObjectId;
     createdAt?: Date;
     updatedAt?: Date;
+    departments?: mongoose.Schema.Types.ObjectId[];
+    clients?: mongoose.Schema.Types.ObjectId[];
 }
 
 const UserSchema = new mongoose.Schema({
@@ -36,7 +38,15 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
         required: true,
-    }
+    },
+    departments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Department',
+    }],
+    clients: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Client',
+    }],
 }, { 
     timestamps: true 
 });

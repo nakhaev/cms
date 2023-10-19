@@ -32,7 +32,15 @@ const accountSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Account',
         required: true,
-    }
+    },
+    users: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }],
+    departments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Department',
+    }],
 }, { 
     timestamps: true 
 });

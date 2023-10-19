@@ -13,6 +13,8 @@ import clientHistoryTypeDefs from './clientHistory/clientHistory.typedefs.js';
 import clientHistoryResolvers from './clientHistory/clientHistory.resolvers.js';
 import connect from './db.js';
 import config from 'config';
+import commonTypeDefs from './common/common.typedefs.js';
+import commonResolvers from './common/common.resolvers.js';
 
 console.log('>>> config', config.get('enviroment'));
 
@@ -22,6 +24,7 @@ const PORT: number = config.get('port') || 4000;
 await connect();
 
 const typeDefs = mergeTypeDefs([
+  commonTypeDefs,
   userTypeDefs,
   accountTypeDefs,
   departmentTypeDefs,
@@ -30,6 +33,7 @@ const typeDefs = mergeTypeDefs([
 ]);
 
 const resolvers = mergeResolvers([
+  commonResolvers,
   userResolvers,
   accountResolvers,
   departmentResolvers,
