@@ -8,9 +8,9 @@ export const getDepartmentList = async (): Promise<Department[]> => {
     }
 }
 
-export const getDepartmentById = async (id: string): Promise<Department | null> => {
+export const getDepartmentById = async (_id: string): Promise<Department | null> => {
     try {
-        return await DepartmentModel.findById(id);
+        return await DepartmentModel.findById(_id);
     } catch (error) {
         throw new Error('Get Department By Id Failed: ' + error);
     }
@@ -20,34 +20,34 @@ export const createDepartment = async (input: any): Promise<Department> => {
     try {
         return (await DepartmentModel.create(input)).toObject();
     } catch (error) {
-        throw new Error('Create User Failed: ' + error);
+        throw new Error('Create Department Failed: ' + error);
     }
 }
 
-export const updateDepartment = async (id: string, input: any): Promise<Department | null> => {
+export const updateDepartment = async (_id: string, input: any): Promise<Department | null> => {
     try {
-        const department = await DepartmentModel.findById(id);
+        const department = await DepartmentModel.findById(_id);
         if (!department) {
             throw new Error('Department not found!');
         }
-        await DepartmentModel.findByIdAndUpdate(id, input);
-        return await DepartmentModel.findById(id);
+        await DepartmentModel.findByIdAndUpdate(_id, input);
+        return await DepartmentModel.findById(_id);
     } catch (error) {
         throw new Error('Update Department Failed: ' + error);
     }
 }
 
-export const deleteDepartment = async (id: string): Promise<Department | null> => {
+export const deleteDepartment = async (_id: string): Promise<Department | null> => {
     try {
-        return await DepartmentModel.findByIdAndDelete(id);
+        return await DepartmentModel.findByIdAndDelete(_id);
     } catch (error) {
         throw new Error('Delete Department Failed: ' + error);
     }
 }
 
-export const getDepartmentsByAccount = async (id: string): Promise<Department[]> => {
+export const getDepartmentsByAccount = async (_id: string): Promise<Department[]> => {
     try {
-        return await DepartmentModel.find({ accountId: id });
+        return await DepartmentModel.find({ accountId: _id });
     } catch (error) {
         throw new Error('Get Departments By Account Failed: ' + error);
     }

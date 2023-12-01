@@ -8,9 +8,9 @@ export const getClientHistoryList = async (): Promise<ClientHistory[]> => {
     }
 }
 
-export const getClientHistoryById = async (id: string): Promise<ClientHistory | null> => {
+export const getClientHistoryById = async (_id: string): Promise<ClientHistory | null> => {
     try {
-        return await ClientHistoryModel.findById(id);
+        return await ClientHistoryModel.findById(_id);
     } catch (error) {
         throw new Error('Get ClientHistory By Id Failed: ' + error);
     }
@@ -24,30 +24,30 @@ export const createClientHistory = async (input: any): Promise<ClientHistory> =>
     }
 }
 
-export const updateClientHistory = async (id: string, input: any): Promise<ClientHistory | null> => {
+export const updateClientHistory = async (_id: string, input: any): Promise<ClientHistory | null> => {
     try {
-        const clientHistory = await ClientHistoryModel.findById(id);
+        const clientHistory = await ClientHistoryModel.findById(_id);
         if (!clientHistory) {
             throw new Error('ClientHistory not found!');
         }
-        await ClientHistoryModel.findByIdAndUpdate(id, input);
-        return await ClientHistoryModel.findById(id);
+        await ClientHistoryModel.findByIdAndUpdate(_id, input);
+        return await ClientHistoryModel.findById(_id);
     } catch (error) {
         throw new Error('Update ClientHistory Failed: ' + error);
     }
 }
 
-export const deleteClientHistory = async (id: string): Promise<ClientHistory | null> => {
+export const deleteClientHistory = async (_id: string): Promise<ClientHistory | null> => {
     try {
-        return await ClientHistoryModel.findByIdAndDelete(id);
+        return await ClientHistoryModel.findByIdAndDelete(_id);
     } catch (error) {
         throw new Error('Delete ClientHistory Failed: ' + error);
     }
 }
 
-export const getClientHistoryByAccount = async (id: string): Promise<ClientHistory[]> => {
+export const getClientHistoryByAccount = async (_id: string): Promise<ClientHistory[]> => {
     try {
-        return await ClientHistoryModel.find({ accountId: id });
+        return await ClientHistoryModel.find({ accountId: _id });
     } catch (error) {
         throw new Error('Get ClientHistories By Account Failed: ' + error);
     }

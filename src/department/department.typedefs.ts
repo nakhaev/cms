@@ -1,6 +1,6 @@
 const departmentTypeDefs = `#graphql
     type Department {
-        id: ID
+        _id: ID
         title: String
         email: String
         phone: String
@@ -13,7 +13,7 @@ const departmentTypeDefs = `#graphql
 
     type Query {
         departments: [Department],
-        department(id: ID!): Department
+        department(_id: ID!): Department
     }
 
     input createDepartmentInput {
@@ -26,7 +26,7 @@ const departmentTypeDefs = `#graphql
     }
 
     input updateDepartmentInput {
-        id: ID!
+        _id: ID!
         title: String
         email: String
         phone: String
@@ -38,7 +38,7 @@ const departmentTypeDefs = `#graphql
     type Mutation {
         createDepartment(input: createDepartmentInput): Department
         updateDepartment(input: updateDepartmentInput): Department
-        deleteDepartment(id: ID!): Department
+        deleteDepartment(_id: ID!): Department
     }
     # type Subscription {}
 `;

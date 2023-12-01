@@ -6,18 +6,18 @@ const departmentResolvers = {
     Query: {
         departments: async () => await departmentService.getDepartmentList(),
         department: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return await departmentService.getDepartmentById(id);
+            const { _id } = args;
+            return await departmentService.getDepartmentById(_id);
         }
     },
     Department: {
         users: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await userService.getUsersByListOfId(id);
+            const { _id } = parent;
+            return await userService.getUsersByListOfId(_id);
         },
         clients: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await clientService.getClientsByListOfId(id);
+            const { _id } = parent;
+            return await clientService.getClientsByListOfId(_id);
         },
     },
     Mutation: {
@@ -27,18 +27,18 @@ const departmentResolvers = {
         },
         updateDepartment: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const { id } = input;
-            if (!id) {
-                throw new Error('Department id is required');
+            const { _id } = input;
+            if (!_id) {
+                throw new Error('Department _id is required');
             }
-            return await departmentService.updateDepartment(id, input);
+            return await departmentService.updateDepartment(_id, input);
         },
         deleteDepartment: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            if (!id) {
-                throw new Error('Department id is required');
+            const { _id } = args;
+            if (!_id) {
+                throw new Error('Department _id is required');
             }
-            return await departmentService.deleteDepartment(id);
+            return await departmentService.deleteDepartment(_id);
         }
     },
     // Subscription: {},

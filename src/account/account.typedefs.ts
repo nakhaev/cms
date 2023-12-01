@@ -1,6 +1,6 @@
 const accountTypeDefs = `#graphql
     type Account {
-        id: ID
+        _id: ID
         title: String
         email: String
         phone: String
@@ -13,7 +13,7 @@ const accountTypeDefs = `#graphql
 
     type Query {
         accounts: [Account],
-        account(id: ID!): Account
+        account(_id: ID!): Account
     }
 
     input CreateAccountInput {
@@ -24,7 +24,7 @@ const accountTypeDefs = `#graphql
     }
 
     input UpdateAccountInput {
-        id: ID!
+        _id: ID!
         title: String
         email: String
         phone: String
@@ -34,7 +34,7 @@ const accountTypeDefs = `#graphql
     type Mutation {
         createAccount(input: CreateAccountInput): Account,
         updateAccount(input: UpdateAccountInput): Account,
-        deleteAccount(id: ID!): Account
+        deleteAccount(_id: ID!): Account
     }
     # type Subscription {}
 `;
