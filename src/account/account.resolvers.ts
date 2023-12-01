@@ -10,26 +10,26 @@ const accountResolvers = {
         accounts: async () => await accountService.getAccountList(),
         // account: (parent, args, context, info) => {
         account: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return await accountService.getAccountById(id);
+            const { _id } = args;
+            return await accountService.getAccountById(_id);
         }
     },
     Account: {
         users: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await userService.getUsersByAccount(id);
+            const { _id } = parent;
+            return await userService.getUsersByAccount(_id);
         },
         departments: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await departmentService.getDepartmentsByAccount(id);
+            const { _id } = parent;
+            return await departmentService.getDepartmentsByAccount(_id);
         },
         clients: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await clientService.getClientsByAccount(id);
+            const { _id } = parent;
+            return await clientService.getClientsByAccount(_id);
         },
         clientHistory: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = parent;
-            return await clientHistoryService.getClientHistoryByAccount(id);
+            const { _id } = parent;
+            return await clientHistoryService.getClientHistoryByAccount(_id);
         }
     },
     Mutation: {
@@ -40,19 +40,19 @@ const accountResolvers = {
         },
         updateAccount: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const { id } = input;
-            if (!id) {
-                throw new Error('Account id is required');
+            const { _id } = input;
+            if (!_id) {
+                throw new Error('Account _id is required');
             }
-            const account = await accountService.updateAccount(id, input);
+            const account = await accountService.updateAccount(_id, input);
             return account;
         },
         deleteAccount: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            if (!id) {
-                throw new Error('Account id is required');
+            const { _id } = args;
+            if (!_id) {
+                throw new Error('Account _id is required');
             }
-            return await accountService.deleteAccount(id);
+            return await accountService.deleteAccount(_id);
         }
     },
     // Subscription: {},

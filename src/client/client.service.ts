@@ -8,9 +8,9 @@ export const getClientList = async (): Promise<Client[]> => {
     }
 };
 
-export const getClientById = async (id: string): Promise<Client | null> => {
+export const getClientById = async (_id: string): Promise<Client | null> => {
     try {
-        return await ClientModel.findById(id);
+        return await ClientModel.findById(_id);
     } catch (error) {
         throw new Error('Get Client By Id Failed: ' + error);
     }
@@ -24,30 +24,30 @@ export const createClient = async (input: any): Promise<Client> => {
     }
 };
 
-export const updateClient = async (id: string, input: any): Promise<Client | null> => {
+export const updateClient = async (_id: string, input: any): Promise<Client | null> => {
     try {
-        let client = await ClientModel.findById(id);
+        let client = await ClientModel.findById(_id);
         if (!client) {
             throw new Error('Client not found');
         }
-        await ClientModel.findByIdAndUpdate(id, input);
-        return await ClientModel.findById(id);
+        await ClientModel.findByIdAndUpdate(_id, input);
+        return await ClientModel.findById(_id);
     } catch (error) {
         throw new Error('Update Client Failed: ' + error);
     }
 };
 
-export const deleteClient = async (id: string): Promise<Client | null> => {
+export const deleteClient = async (_id: string): Promise<Client | null> => {
     try {
-        return await ClientModel.findByIdAndDelete(id);
+        return await ClientModel.findByIdAndDelete(_id);
     } catch (error) {
         throw new Error('Delete Client Failed: ' + error);
     }
 }
 
-export const getClientsByAccount = async (id: string): Promise<Client[]> => {
+export const getClientsByAccount = async (_id: string): Promise<Client[]> => {
     try {
-        return await ClientModel.find({ accountId: id });
+        return await ClientModel.find({ accountId: _id });
     } catch (error) {
         throw new Error('Get Clients By Account Failed: ' + error);
     }

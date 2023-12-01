@@ -9,17 +9,17 @@ export const getUserList = async (): Promise<User[]> => {
     }
 };
 
-export const getUserById = async (id: string): Promise<User | null> => {
+export const getUserById = async (_id: string): Promise<User | null> => {
     try {
-        return await UserModel.findById(id);
+        return await UserModel.findById(_id);
     } catch (error) {
         throw new Error('Get User By Id Failed: ' + error);
     }
 };
 
-export const getUsersByAccount = async (id: string): Promise<User[]> => {
+export const getUsersByAccount = async (_id: string): Promise<User[]> => {
     try {
-        return await UserModel.find({ accountId: id });
+        return await UserModel.find({ accountId: _id });
     } catch (error) {
         throw new Error('Get Users By Account Failed: ' + error);
     }
@@ -43,22 +43,22 @@ export const createUser = async (input: any): Promise<User> => {
 
 export const updateUser = async (input: any): Promise<User | null> => {
     try {
-        const { id } = input;
-        let user = await UserModel.findById(id);
+        const { _id } = input;
+        let user = await UserModel.findById(_id);
         if (!user) {
             throw new Error('User not found');
         }
 
-        await UserModel.findByIdAndUpdate(id, user);
-        return await UserModel.findById(id);
+        await UserModel.findByIdAndUpdate(_id, input);
+        return await UserModel.findById(_id);
     } catch (error) {
         throw new Error('Create User Failed: ' + error);
     }
 }
 
-export const deleteUser = async (id: string): Promise<User | null> => {
+export const deleteUser = async (_id: string): Promise<User | null> => {
     try {
-        return await UserModel.findByIdAndDelete(id);
+        return await UserModel.findByIdAndDelete(_id);
     } catch (error) {
         throw new Error('Delete User Failed: ' + error);
     }
