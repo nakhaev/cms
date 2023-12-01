@@ -1,11 +1,12 @@
 const commonTypeDefs = `#graphql
     # type Query {}
     input SignUpInput {
-        # title: String
         email: String!
         phone: String
         password: String!
-        # status: String
+        title: String!
+        name: String!
+        address: String!
     }
 
     type Mutation {

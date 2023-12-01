@@ -22,4 +22,3 @@ npm run start
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-```

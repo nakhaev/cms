@@ -6,8 +6,8 @@ const clientResolvers = {
     Query: {
         clients: () => clientService.getClientList(),
         client: (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return clientService.getClientById(id);
+            const { _id } = args;
+            return clientService.getClientById(_id);
         }
     },
     Client: {
@@ -27,12 +27,12 @@ const clientResolvers = {
         },
         updateClient: (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const { id } = input;
-            return clientService.updateClient(id, input);
+            const { _id } = input;
+            return clientService.updateClient(_id, input);
         },
         deleteClient: (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return clientService.deleteClient(id);
+            const { _id } = args;
+            return clientService.deleteClient(_id);
         }
     },
     // Subscription: {},

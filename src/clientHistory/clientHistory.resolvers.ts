@@ -4,8 +4,8 @@ const clientHistoryResolvers = {
     Query: {
         clientHistoryList: async () => await clientHistoryService.getClientHistoryList(),
         clientHistoryById: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return await clientHistoryService.getClientHistoryById(id);
+            const { _id } = args;
+            return await clientHistoryService.getClientHistoryById(_id);
         }
       },
     Mutation: {
@@ -15,12 +15,12 @@ const clientHistoryResolvers = {
         },
         updateClientHistory: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const { id } = input;
-            return await clientHistoryService.updateClientHistory(id, input);
+            const { _id } = input;
+            return await clientHistoryService.updateClientHistory(_id, input);
         },
         deleteClientHistory: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return await clientHistoryService.deleteClientHistory(id);
+            const { _id } = args;
+            return await clientHistoryService.deleteClientHistory(_id);
         },
     },
     // Subscription: {},

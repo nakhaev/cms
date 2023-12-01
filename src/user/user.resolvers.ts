@@ -6,8 +6,8 @@ const userResolvers = {
     Query: {
         users: async () => await userService.getUserList(),
         user: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            return await userService.getUserById(id);
+            const { _id } = args;
+            return await userService.getUserById(_id);
         },
     },
     User: {
@@ -27,18 +27,18 @@ const userResolvers = {
         },
         updateUser: async (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
-            const { id } = input;
-            if (!id) {
-                throw new Error('User id is required');
+            const { _id } = input;
+            if (!_id) {
+                throw new Error('User _id is required');
             }
             return await userService.updateUser(input);
         },
         deleteUser: async (parent: any, args: any, context: any, info: any) => {
-            const { id } = args;
-            if (!id) {
-                throw new Error('User id is required');
+            const { _id } = args;
+            if (!_id) {
+                throw new Error('User _id is required');
             }
-            return await userService.deleteUser(id);
+            return await userService.deleteUser(_id);
         }
     },
     // Subscription: {},
