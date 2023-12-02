@@ -2,10 +2,12 @@ import mongoose from "mongoose";
 
 export class Account {
     _id!: mongoose.Schema.Types.ObjectId;
-    title?: string;
-    email?: string;
-    status?: string;
-    phone?: string;
+    title!: string;
+    email!: string;
+    status!: string;
+    phone!: string;
+    emails?: string[];
+    phones?: string[];
 }
 
 const accountSchema = new mongoose.Schema({
@@ -24,7 +26,15 @@ const accountSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true,
-    }
+    },
+    emails: {
+        type: [String],
+        required: false,
+    },
+    phones: {
+        type: [String],
+        required: false,
+    },
 }, { 
     timestamps: true 
 });

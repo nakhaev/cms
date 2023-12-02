@@ -10,6 +10,8 @@ const userTypeDefs = `#graphql
         accountId: ID!
         departments: [Department]
         clients: [Client]
+        emails: [String!]
+        phones: [String!]
     }
 
     type Query {
@@ -27,6 +29,8 @@ const userTypeDefs = `#graphql
         accountId: ID!
         departments: [ID]
         clients: [ID]
+        emails: [String!]
+        phones: [String!]
     }
 
     input UpdateUserInput {
@@ -40,6 +44,8 @@ const userTypeDefs = `#graphql
         accountId: ID
         departments: [ID]
         clients: [ID]
+        emails: [String!]
+        phones: [String!]
     }
 
     type Mutation {
