@@ -13,6 +13,8 @@ export class Department {
     accountId!: mongoose.Schema.Types.ObjectId;
     users?: mongoose.Schema.Types.ObjectId[];
     clients?: mongoose.Schema.Types.ObjectId[];
+    emails?: string[];
+    phones?: string[];
 }
 
 const DepartmentSchema = new mongoose.Schema({
@@ -72,6 +74,14 @@ const DepartmentSchema = new mongoose.Schema({
             }
         },
     }],
+    emails: {
+        type: [String],
+        required: false,
+    },
+    phones: {
+        type: [String],
+        required: false,
+    },
 }, { 
     timestamps: true 
 });

@@ -9,6 +9,8 @@ const accountTypeDefs = `#graphql
         departments: [Department!]
         clients: [Client!]
         clientHistory: [ClientHistory!]
+        emails: [String!]
+        phones: [String!]
     }
 
     type Query {
@@ -21,6 +23,8 @@ const accountTypeDefs = `#graphql
         email: String
         phone: String
         status: String
+        emails: [String!]
+        phones: [String!]
     }
 
     input UpdateAccountInput {
@@ -29,6 +33,8 @@ const accountTypeDefs = `#graphql
         email: String
         phone: String
         status: String
+        emails: [String!]
+        phones: [String!]
     }
 
     type Mutation {

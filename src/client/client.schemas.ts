@@ -12,6 +12,8 @@ export class Client {
     accountId!: mongoose.Schema.Types.ObjectId;
     createdAt?: Date;
     updatedAt?: Date;
+    emails?: string[];
+    phones?: string[];
 }
 
 const accountSchema = new mongoose.Schema({
@@ -68,6 +70,14 @@ const accountSchema = new mongoose.Schema({
             }
         },
     }],
+    emails: {
+        type: [String],
+        required: false,
+    },
+    phones: {
+        type: [String],
+        required: false,
+    },
 }, { 
     timestamps: true 
 });

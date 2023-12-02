@@ -79,6 +79,14 @@ const UserSchema = new mongoose.Schema({
             }
         },
     }],
+    emails: {
+        type: [String],
+        required: false,
+    },
+    phones: {
+        type: [String],
+        required: false,
+    },
 }, { 
     timestamps: true 
 });
