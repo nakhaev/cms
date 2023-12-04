@@ -31,7 +31,7 @@ const departmentResolvers = {
             if (!_id) {
                 throw new Error('Department _id is required');
             }
-            return await departmentService.updateDepartment(_id, input);
+            return await departmentService.updateDepartment(input);
         },
         deleteDepartment: async (parent: any, args: any, context: any, info: any) => {
             const { _id } = args;

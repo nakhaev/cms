@@ -11,7 +11,7 @@ export const signUp = async (input: any) => {
         // create account
         const account = await accountService.createAccount(input);
         if (!account) {
-            throw new Error('Account not created');
+            throw new Error('[Common Service] Account not created');
         }
     
         // create department
@@ -25,7 +25,7 @@ export const signUp = async (input: any) => {
         };
         const department = await departmentService.createDepartment(newDepartment);
         if (!department) {
-            throw new Error('Department not created');
+            throw new Error('[Common Service] Department not created');
         }
     
         // create user
@@ -42,17 +42,17 @@ export const signUp = async (input: any) => {
     
         const user = await userService.createUser(newUser);
         if (!user) {
-            throw new Error('User not created');
+            throw new Error('[Common Service] User not created');
         }
     
         console.log('user', user);
         console.log('department', department);
         // update department with userId
         department.users?.push(user._id);
-        await departmentService.updateDepartment(department._id.toString(), department);
+        await departmentService.updateDepartment(department);
     
         return account;
     } catch(error) {
-        throw new Error('Failed to sign Up: ' + error);
+        throw new Error('[Common Service] Failed to sign Up: ' + error);
     }
 }

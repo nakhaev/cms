@@ -28,7 +28,7 @@ const clientResolvers = {
         updateClient: (parent: any, args: any, context: any, info: any) => {
             const { input } = args;
             const { _id } = input;
-            return clientService.updateClient(_id, input);
+            return clientService.updateClient(input);
         },
         deleteClient: (parent: any, args: any, context: any, info: any) => {
             const { _id } = args;

@@ -4,15 +4,15 @@ import { UserModel } from "../user/user.schemas.js";
 import { ClientModel } from "../client/client.schemas.js";
 
 export class Department {
-    _id!: mongoose.Schema.Types.ObjectId;
+    _id!: mongoose.Types.ObjectId;
     title?: string;
     email?: string;
     status?: string;
     address?: string;
     phone?: string;
-    accountId!: mongoose.Schema.Types.ObjectId;
-    users?: mongoose.Schema.Types.ObjectId[];
-    clients?: mongoose.Schema.Types.ObjectId[];
+    accountId!: mongoose.Types.ObjectId;
+    users!: mongoose.Types.ObjectId[];
+    clients!: mongoose.Types.ObjectId[];
     emails?: string[];
     phones?: string[];
 }
@@ -39,7 +39,7 @@ const DepartmentSchema = new mongoose.Schema({
         required: true,
     },
     accountId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Account',
         validate: {
             validator: async (v: any) => {
@@ -51,7 +51,7 @@ const DepartmentSchema = new mongoose.Schema({
         },
     },
     users: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'User',
         validate: {
             validator: async (v: any) => {
@@ -63,7 +63,7 @@ const DepartmentSchema = new mongoose.Schema({
         },
     }],
     clients: [{ 
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Client',
         validate: {
             validator: async (v: any) => {
