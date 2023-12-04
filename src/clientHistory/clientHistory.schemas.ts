@@ -5,12 +5,12 @@ import { UserModel } from "../user/user.schemas.js";
 import { DepartmentModel } from "../department/department.schemas.js";
 
 export class ClientHistory {
-    _id!: mongoose.Schema.Types.ObjectId;
+    _id!: mongoose.Types.ObjectId;
     description?: string;
-    departmentId!: mongoose.Schema.Types.ObjectId;
-    userId!: mongoose.Schema.Types.ObjectId;
-    accountId!: mongoose.Schema.Types.ObjectId;
-    clientId!: mongoose.Schema.Types.ObjectId;
+    departmentId!: mongoose.Types.ObjectId;
+    userId!: mongoose.Types.ObjectId;
+    accountId!: mongoose.Types.ObjectId;
+    clientId!: mongoose.Types.ObjectId;
     date!: string;
 }
 
@@ -20,7 +20,7 @@ const clientHistorySchema = new mongoose.Schema({
         required: false,
     },
     departmentId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Department',
         required: true,
         validate: {
@@ -33,7 +33,7 @@ const clientHistorySchema = new mongoose.Schema({
         },
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'User',
         required: true,
         validate: {
@@ -46,7 +46,7 @@ const clientHistorySchema = new mongoose.Schema({
         },
     },
     accountId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Account',
         required: true,
         validate: {
@@ -59,7 +59,7 @@ const clientHistorySchema = new mongoose.Schema({
         },
     },
     clientId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Client',
         required: true,
         validate: {

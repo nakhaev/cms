@@ -4,16 +4,18 @@ import { UserModel } from "../user/user.schemas.js";
 import { DepartmentModel } from "../department/department.schemas.js";
 
 export class Client {
-    _id!: mongoose.Schema.Types.ObjectId;
+    _id!: mongoose.Types.ObjectId;
     name?: string;
     email?: string;
     status?: string;
     phone?: string;
-    accountId!: mongoose.Schema.Types.ObjectId;
+    accountId!: mongoose.Types.ObjectId;
     createdAt?: Date;
     updatedAt?: Date;
     emails?: string[];
     phones?: string[];
+    users!: mongoose.Types.ObjectId[];
+    departments!: mongoose.Types.ObjectId[];
 }
 
 const accountSchema = new mongoose.Schema({
@@ -34,7 +36,7 @@ const accountSchema = new mongoose.Schema({
         required: true,
     },
     accountId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Account',
         required: true,
         validate: {
@@ -47,7 +49,7 @@ const accountSchema = new mongoose.Schema({
         },
     },
     users: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'User',
         validate: {
             validator: async (v: any) => {
@@ -59,7 +61,7 @@ const accountSchema = new mongoose.Schema({
         },
     }],
     departments: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Department',
         validate: {
             validator: async (v: any) => {

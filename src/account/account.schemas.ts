@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export class Account {
-    _id!: mongoose.Schema.Types.ObjectId;
+    _id!: mongoose.Types.ObjectId;
     title!: string;
     email!: string;
     status!: string;
